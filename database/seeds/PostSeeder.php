@@ -20,7 +20,7 @@ class PostSeeder extends Seeder
             $post->image = $faker->imageUrl(600, 400, 'Posts');
             $post->description = $faker->paragraphs(5, true);
             $post->author = $faker->name();
-            $post->posted_at = $faker->date();
+            $post->posted_at = $faker->date()->nullable();
             $post->save();
         }
     }
