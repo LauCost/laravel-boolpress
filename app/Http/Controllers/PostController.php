@@ -15,6 +15,12 @@ class PostController extends Controller
     public function index()
     {
         //
+
+        $posts = Post::all();
+        /* ddd($posts); */
+
+        return view('guest.posts.index', compact('posts'));
+
     }
 
     /**
@@ -25,6 +31,7 @@ class PostController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -47,6 +54,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
+        return view('guest.posts.show', compact('post'));
+
     }
 
     /**
