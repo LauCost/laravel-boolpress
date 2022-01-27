@@ -18,6 +18,7 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Sub Title</th>
+                <th>Category</th>
                 <th>Image</th>
                 <th>Slug</th>
                 <th>Action</th>
@@ -30,8 +31,9 @@
                 <tr>
                     <td scope="row">{{ $post->id }}</td>
                     <td>{{ $post->title }}</td>
-                    <td><img width="100" src="{{ $post->image }}" alt=""></td>
                     <td>{{ $post->sub_title }}</td>
+                    <td>{{ $post->category_id }}</td>
+                    <td><img width="100" src="{{ $post->image }}" alt=""></td>
                     <td>{{ $post->slug }}</td>
                     <td>
                         <a href="{{ route('posts.show', $post->slug) }}">

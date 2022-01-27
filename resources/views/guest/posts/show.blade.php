@@ -16,6 +16,20 @@
             {{ $post->body }}
         </p>
 
+        <div class="category">
+            Categoria: {{ $post->category != null ? $post->category->name : 'Senza Categoria' }}
+        </div>
+
+        @auth
+
+            <div class="action">
+                <a href="#">
+                    Back to Admin
+                </a>
+            </div>
+
+        @endauth
+
     </div>
 
 @endsection

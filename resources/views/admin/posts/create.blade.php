@@ -41,6 +41,23 @@
         </div>
 
         <div class="mb-3">
+            <label for="category_id" class="form-label">Categorie</label>
+            <select class="form-control" name="category_id" id="category_id">
+                <option value="" selected>Seleziona una categoria</option>
+                @foreach ($categories as $category)
+
+                    <option value="{{ $category->id }}">
+                        {{ $category->name }}
+                    </option>
+
+                @endforeach
+            </select>
+            @error('category_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="body" class="form-label">Text</label>
             <textarea class="form-control" name="body" id="body" rows="5">{{ old('body') }}</textarea>
             @error('body')
