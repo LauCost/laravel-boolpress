@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     //
-    protected $fillable = ['title', 'body', 'image', 'sub_title', 'slug'];
+    protected $fillable = ['title', 'body', 'image', 'sub_title', 'slug', 'category_id'];
 
     /**
      * Get the route key for the model.
@@ -17,5 +17,10 @@ class Post extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
