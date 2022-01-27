@@ -2,13 +2,24 @@
 
 @section('content')
 
+    <h1>
+        Tutti i Posts
+    </h1>
+
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Title</th>
-                <th>Author</th>
-                <th>Posted at</th>
+                <th>Sub Title</th>
+                <th>Image</th>
+                <th>Slug</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -17,24 +28,34 @@
             @foreach ($posts as $post)
 
                 <tr>
-                    <td scope="row"></td>
-                    <td>{{ $post->id }}</td>
+                    <td scope="row">{{ $post->id }}</td>
                     <td>{{ $post->title }}</td>
-                    <td>{{ $post->author }}</td>
-                    <td>{{ $post->posted_at }}</td>
+                    <td><img width="100" src="{{ $post->image }}" alt=""></td>
+                    <td>{{ $post->sub_title }}</td>
+                    <td>{{ $post->slug }}</td>
                     <td>
-                        <a href="#">
+                        <a href="{{ route('posts.show', $post->slug) }}">
                             View
                         </a> -
-                        <a href="#">
+                        <a href="{{ route('admin.posts.edit', $post->slug) }}">
                             Edit
                         </a> -
-                        <a href="#">
-                            Delete</a>
+                        <form action="{{ route('admin.posts.destroy', $post->slug) }}" method="post">
+                            @csrf
+
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
 
             @endforeach
+
+            <div class="admin_pages">
+
+                {{ $posts->links() }}
+
+            </div>
 
         </tbody>
     </table>

@@ -93,11 +93,9 @@
                         </div>
                     </div>
 
-
-
-                    <h2>Section title</h2>
-
                     @yield('content')
+
+
                 </main>
             </div>
         </div>

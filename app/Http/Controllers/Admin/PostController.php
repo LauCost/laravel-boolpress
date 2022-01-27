@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -17,7 +19,7 @@ class PostController extends Controller
     {
         //
 
-        $posts = Post::all();
+        $posts = Post::paginate(5);
 
         return view('admin.posts.index', compact('posts'));
 
@@ -46,14 +48,18 @@ class PostController extends Controller
     {
         //
 
-        $validate = $request->validate([
-            'title' => 'required',
+        $validated = $request->validate([
+            'title' => ['required', 'unique:posts', 'max:200'],
             'image' => 'nullable',
-            'author' => 'required',
-            'description' => 'nullable',
+            'sub_title' => 'nullable',
+            'body' => 'nullable',
         ]);
 
-        Post::create($validate);
+        $validated['slug'] = Str::slug($validated['title']);
+
+        //ddd($validated);
+
+        Post::create($validated);
 
         return redirect()->route('admin.posts.index');
     }
@@ -80,7 +86,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+
+        return view('admin.posts.edit', compact('post'));
+
     }
 
     /**
@@ -93,6 +101,20 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
+
+        $validated = $request->validate([
+            'title' => ['required', Rule::unique('posts')->ignore($post->id), 'max:200'],
+            'image' => 'nullable',
+            'sub_title' => 'nullable',
+            'body' => 'nullable',
+        ]);
+
+        $validated['slug'] = Str::slug($validated['title']);
+
+        $post->update($validated);
+
+        return redirect()->route('admin.posts.index')->with('message', 'Il post è stato modificato correttamente');
+
     }
 
     /**
@@ -104,5 +126,10 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('message', 'Il post è stato eliminato correttamente');
+
     }
 }

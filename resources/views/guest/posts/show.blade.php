@@ -2,16 +2,18 @@
 
 @section('content')
 
-    <div class="">
+    <div class="container">
 
-        <h4 class="card-title">
+        <img class="img-fluid" src="{{ $post->image }}" alt="">
+
+        <h1 class="card-title">
             {{ $post->title }}
+        </h1>
+        <h4 class="card-title">
+            {{ $post->sub_title }}
         </h4>
-
-        <img class="" src="{{ $post->image }}" alt="">
-
         <p class="card-text">
-            {{ $post->description }}
+            {{ $post->body }}
         </p>
 
     </div>

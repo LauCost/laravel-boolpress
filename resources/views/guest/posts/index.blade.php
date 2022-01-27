@@ -17,13 +17,17 @@
                             {{ $post->title }}
                         </h4>
 
+                        <h6 class="card-title">
+                            {{ $post->sub_title }}
+                        </h6>
+
                         <img class="card-img-top" src="{{ $post->image }}" alt="">
 
                         <p class="card-text">
-                            {{ $post->description }}
+                            {{ $post->body }}
                         </p>
 
-                        <a href="{{ route('guest.posts.show', $post->id) }}">
+                        <a href="{{ route('posts.show', $post->slug) }}">
                             Vedi il Post
                         </a>
 
