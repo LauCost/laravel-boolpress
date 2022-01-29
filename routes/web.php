@@ -29,5 +29,6 @@ Route::get('guest/posts/{post}', 'PostController@show')->name('guest.posts.show'
 Route::namespace ('Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('posts', 'PostController');
+    Route::resource('categories', 'CategoryController');
 
 });
