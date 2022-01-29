@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::resource('posts', PostController::class)->only(['index', 'show'])->parameter('post', 'post:slug');
 
+Route::get('categories/{category:slug}/posts', 'CategoryController@posts')->name('categories.post');
+
 /* Route::get('guest/posts/index', 'PostController@index')->name('guest.posts.index')->parameter('post', 'post:slug');
 Route::get('guest/posts/{post}', 'PostController@show')->name('guest.posts.show')->parameter('post', 'post:slug'); */
 

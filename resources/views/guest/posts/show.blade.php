@@ -17,7 +17,13 @@
         </p>
 
         <div class="category">
-            Categoria: {{ $post->category != null ? $post->category->name : 'Senza Categoria' }}
+
+
+            @if ($post->category)
+                Categoria: <a href="{{ route('categories.post', $post->category->slug) }}">{{ $post->category->name }}</a>
+            @else
+                Senza Categoria
+            @endif
         </div>
 
         @auth
