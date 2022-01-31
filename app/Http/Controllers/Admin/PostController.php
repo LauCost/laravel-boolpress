@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -52,12 +53,14 @@ class PostController extends Controller
 
         $validated = $request->validate([
             'title' => ['required', 'unique:posts', 'max:200'],
-            'image' => 'nullable',
+            'image' => ['nullable', 'image', 'max:150'],
             'sub_title' => 'nullable',
             'body' => 'nullable',
             'category_id' => ['nullable', 'exists:categories,id'],
         ]);
 
+        $cover_path = Storage::put('post_images', $request->file('image'));
+        $validated['image'] = $cover_path;
         $validated['slug'] = Str::slug($validated['title']);
 
         //ddd($validated);
