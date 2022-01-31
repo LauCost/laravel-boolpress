@@ -7,7 +7,7 @@
 
     @include('partials.errors')
 
-    <form action="{{ route('admin.posts.update', $post->slug) }}" method="post">
+    <form action="{{ route('admin.posts.update', $post->slug) }}" method="post" enctype="multipart/form-data">
         @csrf
 
         @method('PUT')
@@ -34,8 +34,8 @@
 
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>
-            <input type="text" name="image" id="image" class="form-control" placeholder="https://"
-                aria-describedby="imageHelper" value="{{ $post->image }}">
+            <input type="file" name="image" id="image" class="form-control" placeholder="https://"
+                aria-describedby="imageHelper" value="">
             <small id=" imageHelper" class="text-muted">Type a image for your post</small>
             @error('image')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -48,7 +48,7 @@
                 <option value="">Seleziona una categoria</option>
                 @foreach ($categories as $category)
 
-                    <option value="{{ $category->id }}" {{ $category->id === $post->category->id ? 'selected' : '' }}>
+                    <option value="{{ $category->id }}" {{ $category->id === $post->category_id ? 'selected' : '' }}>
                         {{ $category->name }}
                     </option>
 

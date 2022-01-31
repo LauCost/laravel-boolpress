@@ -58,9 +58,13 @@ class PostController extends Controller
             'body' => 'nullable',
             'category_id' => ['nullable', 'exists:categories,id'],
         ]);
+        if ($request->file('img')) {
 
-        $cover_path = Storage::put('post_images', $request->file('img'));
-        $validated['img'] = $cover_path;
+            $img_path = Storage::put('post_images', $request->file('img'));
+
+            $validated['img'] = $img_path;
+
+        }
         $validated['slug'] = Str::slug($validated['title']);
 
         //ddd($validated);
@@ -109,13 +113,25 @@ class PostController extends Controller
     {
         //
 
+        //ddd($request->all());
+
         $validated = $request->validate([
             'title' => ['required', Rule::unique('posts')->ignore($post->id), 'max:200'],
-            'image' => 'nullable',
+            'img' => ['nullable', 'image', 'max:750'],
             'sub_title' => 'nullable',
             'body' => 'nullable',
             'category_id' => ['nullable', 'exists:categories,id'],
         ]);
+
+        if ($request->file('img')) {
+
+            Storage::delete($post->img);
+
+            $img_path = Storage::put('post_images', $request->file('img'));
+
+            $validated['img'] = $img_path;
+
+        }
 
         $validated['slug'] = Str::slug($validated['title']);
 
