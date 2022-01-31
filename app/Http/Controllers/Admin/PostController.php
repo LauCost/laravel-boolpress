@@ -53,14 +53,14 @@ class PostController extends Controller
 
         $validated = $request->validate([
             'title' => ['required', 'unique:posts', 'max:200'],
-            'image' => ['nullable', 'image', 'max:150'],
+            'img' => ['nullable', 'image', 'max:750'],
             'sub_title' => 'nullable',
             'body' => 'nullable',
             'category_id' => ['nullable', 'exists:categories,id'],
         ]);
 
-        $cover_path = Storage::put('post_images', $request->file('image'));
-        $validated['image'] = $cover_path;
+        $cover_path = Storage::put('post_images', $request->file('img'));
+        $validated['img'] = $cover_path;
         $validated['slug'] = Str::slug($validated['title']);
 
         //ddd($validated);

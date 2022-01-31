@@ -31,11 +31,11 @@
         </div>
 
         <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" name="image" id="image" class="form-control" placeholder="https://"
-                aria-describedby="imageHelper" value="" accept="images/*">
-            <small id=" imageHelper" class="text-muted">Type a image for your post</small>
-            @error('image')
+            <label for="img" class="form-label">Image</label>
+            <input type="file" name="img" id="img" class="form-control" placeholder="https://"
+                aria-describedby="imgHelper" value="" accept=".jpg,.png">
+            <small id=" imgHelper" class="text-muted">Type a image for your post</small>
+            @error('img')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>

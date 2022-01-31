@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     //
-    protected $fillable = ['title', 'body', 'image', 'sub_title', 'slug', 'category_id'];
+    protected $fillable = ['title', 'body', 'img', 'sub_title', 'slug', 'category_id'];
 
     /**
      * Get the route key for the model.

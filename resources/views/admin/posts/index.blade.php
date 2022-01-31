@@ -33,7 +33,7 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->sub_title }}</td>
                     <td>{{ $post->category_id }}</td>
-                    <td><img width="100" src="{{ $post->image }}" alt=""></td>
+                    <td><img width="100" src="{{ asset('storage/' . $post->img) }}" alt=""></td>
                     <td>{{ $post->slug }}</td>
                     <td>
                         <a href="{{ route('posts.show', $post->slug) }}">

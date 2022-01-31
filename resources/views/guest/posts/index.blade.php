@@ -24,7 +24,7 @@
                                         {{ $post->sub_title }}
                                     </h6>
 
-                                    <img class="card-img-top" src="{{ $post->image }}" alt="">
+                                    <img class="card-img-top" src="{{ $post->img }}" alt="">
 
                                     <p class="card-text">
                                         {{ $post->body }}

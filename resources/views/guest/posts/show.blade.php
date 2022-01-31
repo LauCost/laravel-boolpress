@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <img class="img-fluid" src="{{ $post->image }}" alt="">
+        <img class="img-fluid" src="{{ asset('storage/' . $post->img) }}" alt="">
 
         <h1 class="card-title">
             {{ $post->title }}
@@ -20,7 +20,8 @@
 
 
             @if ($post->category)
-                Categoria: <a href="{{ route('categories.post', $post->category->slug) }}">{{ $post->category->name }}</a>
+                Categoria: <a
+                    href="{{ route('categories.post', $post->category->slug) }}">{{ $post->category->name }}</a>
             @else
                 Senza Categoria
             @endif
