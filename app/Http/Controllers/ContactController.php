@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactFormMail;
+use App\Mail\MarkdownContactFormMail;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -30,11 +30,11 @@ class ContactController extends Controller
         $contact = Contact::create($validate_data);
 
         //ddd($validate_data);
+        //return (new MarkdownContactFormMail($contact))->render();
 
-        Mail::to('admin@example.com')->send(new ContactFormMail($contact));
+        Mail::to('admin@example.com')->send(new MarkdownContactFormMail($contact));
 
         return redirect()->back()->with('message', 'Grazie della sua email');
 
-        //return (new ContactFormMail($validate_data))->render();
     }
 }
