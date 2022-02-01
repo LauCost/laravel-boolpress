@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('contacts', 'PageController@contacts')->name('contacts');
+Route::post('contacts', 'PageController@sendContactForm')->name('contacts.send');
+
 Route::resource('posts', PostController::class)->only(['index', 'show'])->parameter('post', 'post:slug');
 
 Route::get('categories/{category:slug}/posts', 'CategoryController@posts')->name('categories.post');
