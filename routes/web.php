@@ -19,8 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('contacts', 'PageController@contacts')->name('contacts');
-Route::post('contacts', 'PageController@sendContactForm')->name('contacts.send');
+Route::get('contacts', 'ContactController@show_contacts')->name('contacts');
+Route::post('contacts', 'ContactController@store')->name('contacts.send');
 
 Route::resource('posts', PostController::class)->only(['index', 'show'])->parameter('post', 'post:slug');
 

@@ -16,14 +16,14 @@
 
     <dl>
         <dd>
-            Nome: {{ $data['name'] }}
+            Nome: {{ $contact['name'] }}
         </dd>
         <dd>
-            Email: {{ $data['email'] }}
+            Email: {{ $contact['email'] }}
         </dd>
         <div class="message">
             <p>
-                Messaggio: {{ $data['message'] }}
+                Messaggio: {{ $contact['message'] }}
             </p>
         </div>
     </dl>

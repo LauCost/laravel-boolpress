@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactFormMail;
+use App\Models\Contact;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 class ContactController extends Controller
 {
     //
 
-    public function contacts()
+    public function show_contacts()
     {
 
         return view('guest.contacts.form');
     }
 
-    public function sendContactForm(Request $request)
+    public function store(Request $request)
     {
         //ddd($request->all());
 
@@ -22,9 +27,11 @@ class ContactController extends Controller
             'message' => ['required', 'min:30', 'max:500'],
         ]);
 
+        $contact = Contact::create($validate_data);
+
         //ddd($validate_data);
 
-        Mail::to('admin@example.com')->send(new ContactFormMail($validate_data));
+        Mail::to('admin@example.com')->send(new ContactFormMail($contact));
 
         return redirect()->back()->with('message', 'Grazie della sua email');
 
