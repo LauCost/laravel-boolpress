@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactFormMail;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-
-class PageController extends Controller
+class ContactController extends Controller
 {
+    //
 
     public function contacts()
     {
