@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,16 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+/* Route::middleware('auth:api')->get('/user', function (Request $request) {
+return $request->user();
 });
 
 Route::get('posts', function () {
 
-    $posts = Post::all();
+$posts = Post::paginate(9);
 
-    return response()->json([
-        'status_code' => 200,
-        'response' => $posts,
-    ]);
-});
+return response()->json([
+'status_code' => 200,
+'response' => $posts,
+]);
+
+return Post::with(['category'])->paginate(9);
+}); */
+
+Route::get('posts', 'API\PostController@index');

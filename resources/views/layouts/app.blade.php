@@ -49,6 +49,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('api.posts') }}">Api Posts</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -74,8 +77,9 @@
                                     <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
                                         Dashboard
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

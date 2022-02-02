@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('guest.welcome');
 })->name('home');
 
+Route::get('/apipost', function () {
+    return view('guest.api.index');
+})->name('api.posts');
+
 Auth::routes();
 
 Route::get('contacts', 'ContactController@show_contacts')->name('contacts');
