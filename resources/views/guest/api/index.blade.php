@@ -6,4 +6,6 @@
         Posts
     </h1>
 
+    <posts-list></posts-list>
+
 @endsection
