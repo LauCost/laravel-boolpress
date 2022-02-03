@@ -39,3 +39,7 @@ Route::namespace ('Admin')->prefix('admin')->name('admin.')->middleware('auth')-
     Route::resource('categories', 'CategoryController');
 
 });
+
+Route::get('/{any}', function () {
+    return view('guest.welcome');
+})->where('any', '.*');

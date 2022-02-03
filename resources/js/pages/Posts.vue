@@ -1,11 +1,18 @@
 <template>
   <div>
-    <h1>Test2</h1>
+    <h1>Posts list</h1>
+
+    <posts-list></posts-list>
   </div>
 </template>
 
 <script>
-export default {};
+import PostsList from "../components/PostListComponent.vue";
+export default {
+  components: {
+    PostsList,
+  },
+};
 </script>
 
 <style>
