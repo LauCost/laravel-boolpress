@@ -1,9 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.spa')
 
 @section('content')
 
-    <h1>
-        Test
-    </h1>
+    <App></App>
 
 @endsection
